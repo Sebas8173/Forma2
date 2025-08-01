@@ -38,10 +38,11 @@
           <th class="border p-2">Cédula</th>
           <th class="border p-2">Nombre</th>
           <th class="border p-2">Valor</th>
-          <th class="border p-2">Archivo</th>
-          <th class="border p-2">Estado</th>
+          <th class="border p-2">Banco</th>
           <th class="border p-2">Número de Cuenta</th>
-          <th class="border p-2">Acción</th>
+          <th class="border p-2 text-right">Archivo</th>
+          <th class="border p-2 text-right">Estado</th>
+          <th class="border p-2 text-right">Acción</th>
         </tr>
       </thead>
       <tbody id="staffTableBody"></tbody>
@@ -51,18 +52,18 @@
   <script>
     // Datos simulados
     let staffData = [
-      { id: 1, evento: 'Evento 1', cedula: '12345678', nombre: 'Juan Pérez', valor: 100, archivo: 'factura1.pdf', estado: 'Pendiente', numeroCuenta: '00123456789' },
-      { id: 2, evento: 'Evento 1', cedula: '87654321', nombre: 'María Gómez', valor: 150, archivo: 'factura2.pdf', estado: 'Pagado', comprobante: 'comprobante1.pdf', numeroCuenta: '00198765432' },
-      { id: 3, evento: 'Evento 1', cedula: '23456789', nombre: 'Pedro López', valor: 180, archivo: 'factura3.pdf', estado: 'Pendiente', numeroCuenta: '00123457986' },
-      { id: 4, evento: 'Evento 1', cedula: '34567890', nombre: 'Lucía Fernández', valor: 220, archivo: 'factura4.pdf', estado: 'Pagado', comprobante: 'comprobante2.pdf', numeroCuenta: '00134567890' },
-      { id: 5, evento: 'Evento 2', cedula: '11223344', nombre: 'Carlos López', valor: 200, archivo: 'factura5.pdf', estado: 'Pendiente', numeroCuenta: '00223456789' },
-      { id: 6, evento: 'Evento 2', cedula: '44556677', nombre: 'Ana Martínez', valor: 250, archivo: 'factura6.pdf', estado: 'Pagado', comprobante: 'comprobante3.pdf', numeroCuenta: '00298765432' },
-      { id: 7, evento: 'Evento 2', cedula: '55667788', nombre: 'José Rodríguez', valor: 190, archivo: 'factura7.pdf', estado: 'Pendiente', numeroCuenta: '00223457986' },
-      { id: 8, evento: 'Evento 2', cedula: '66778899', nombre: 'Elena Castro', valor: 170, archivo: 'factura8.pdf', estado: 'Pagado', comprobante: 'comprobante4.pdf', numeroCuenta: '00234567890' },
-      { id: 9, evento: 'Evento 3', cedula: '55667788', nombre: 'Luis Rodríguez', valor: 300, archivo: 'factura9.pdf', estado: 'Pendiente', numeroCuenta: '00323456789' },
-      { id: 10, evento: 'Evento 3', cedula: '99887766', nombre: 'Patricia Sánchez', valor: 120, archivo: 'factura10.pdf', estado: 'Pagado', comprobante: 'comprobante5.pdf', numeroCuenta: '00398765432' },
-      { id: 11, evento: 'Evento 3', cedula: '11223399', nombre: 'Mario Díaz', valor: 250, archivo: 'factura11.pdf', estado: 'Pendiente', numeroCuenta: '00323457986' },
-      { id: 12, evento: 'Evento 3', cedula: '22334455', nombre: 'Isabel Torres', valor: 200, archivo: 'factura12.pdf', estado: 'Pagado', comprobante: 'comprobante6.pdf', numeroCuenta: '00334567890' }
+      { id: 1, evento: 'Evento 1', cedula: '12345678', nombre: 'Juan Pérez', valor: 100, archivo: 'factura1.pdf', estado: 'Pendiente', banco: 'Banco A', numeroCuenta: '00123456789' },
+      { id: 2, evento: 'Evento 1', cedula: '87654321', nombre: 'María Gómez', valor: 150, archivo: 'factura2.pdf', estado: 'Pagado', comprobante: 'comprobante1.pdf', banco: 'Banco B', numeroCuenta: '00198765432' },
+      { id: 3, evento: 'Evento 1', cedula: '23456789', nombre: 'Pedro López', valor: 180, archivo: 'factura3.pdf', estado: 'Pendiente', banco: 'Banco C', numeroCuenta: '00123457986' },
+      { id: 4, evento: 'Evento 1', cedula: '34567890', nombre: 'Lucía Fernández', valor: 220, archivo: 'factura4.pdf', estado: 'Pagado', comprobante: 'comprobante2.pdf', banco: 'Banco D', numeroCuenta: '00134567890' },
+      { id: 5, evento: 'Evento 2', cedula: '11223344', nombre: 'Carlos López', valor: 200, archivo: 'factura5.pdf', estado: 'Pendiente', banco: 'Banco A', numeroCuenta: '00223456789' },
+      { id: 6, evento: 'Evento 2', cedula: '44556677', nombre: 'Ana Martínez', valor: 250, archivo: 'factura6.pdf', estado: 'Pagado', comprobante: 'comprobante3.pdf', banco: 'Banco B', numeroCuenta: '00298765432' },
+      { id: 7, evento: 'Evento 2', cedula: '55667788', nombre: 'José Rodríguez', valor: 190, archivo: 'factura7.pdf', estado: 'Pendiente', banco: 'Banco C', numeroCuenta: '00223457986' },
+      { id: 8, evento: 'Evento 2', cedula: '66778899', nombre: 'Elena Castro', valor: 170, archivo: 'factura8.pdf', estado: 'Pagado', comprobante: 'comprobante4.pdf', banco: 'Banco D', numeroCuenta: '00234567890' },
+      { id: 9, evento: 'Evento 3', cedula: '55667788', nombre: 'Luis Rodríguez', valor: 300, archivo: 'factura9.pdf', estado: 'Pendiente', banco: 'Banco A', numeroCuenta: '00323456789' },
+      { id: 10, evento: 'Evento 3', cedula: '99887766', nombre: 'Patricia Sánchez', valor: 120, archivo: 'factura10.pdf', estado: 'Pagado', comprobante: 'comprobante5.pdf', banco: 'Banco B', numeroCuenta: '00398765432' },
+      { id: 11, evento: 'Evento 3', cedula: '11223399', nombre: 'Mario Díaz', valor: 250, archivo: 'factura11.pdf', estado: 'Pendiente', banco: 'Banco C', numeroCuenta: '00323457986' },
+      { id: 12, evento: 'Evento 3', cedula: '22334455', nombre: 'Isabel Torres', valor: 200, archivo: 'factura12.pdf', estado: 'Pagado', comprobante: 'comprobante6.pdf', banco: 'Banco D', numeroCuenta: '00334567890' }
     ];
 
     // Elementos del DOM
@@ -100,7 +101,7 @@
       if (filteredStaff.length === 0) {
         staffTableBody.innerHTML = `
           <tr>
-            <td colspan="7" class="border p-2 text-center">No hay datos disponibles</td>
+            <td colspan="8" class="border p-2 text-center">No hay datos disponibles</td>
           </tr>
         `;
       } else {
@@ -111,14 +112,15 @@
             <td class="border p-2">${staff.cedula}</td>
             <td class="border p-2">${staff.nombre}</td>
             <td class="border p-2">$${staff.valor}</td>
-            <td class="border p-2">
+            <td class="border p-2">${staff.banco}</td>
+            <td class="border p-2">${staff.numeroCuenta}</td>
+            <td class="border p-2 text-right">
               <button class="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600" onclick="openFile('${staff.archivo}')">
                 Abrir Archivo
               </button>
             </td>
-            <td class="border p-2">${staff.estado}</td>
-            <td class="border p-2">${staff.numeroCuenta}</td>
-            <td class="border p-2">
+            <td class="border p-2 text-right">${staff.estado}</td>
+            <td class="border p-2 text-right">
               ${staff.estado === 'Pendiente' ? 
                 `<button class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600" onclick="handlePagar(${staff.id})">Pagado</button>` : 
                 `<button class="bg-gray-500 text-white px-2 py-1 rounded hover:bg-gray-600" onclick="openComprobante('${staff.comprobante}')">Ver Comprobante</button>`}
